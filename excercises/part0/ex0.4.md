@@ -6,7 +6,7 @@ sequenceDiagram
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     Note over browser: Payload: note={textbox input}
     activate server
-    server-->>browser: 302 Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
+    server-->>browser: Returns a 302 Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
