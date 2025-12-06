@@ -1,9 +1,9 @@
-```
+```mermaid
 sequenceDiagram
     participant Browser
     participant Server
 
-    Browser->>Server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    browser->>server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
     Note over Browser: Payload: note={textbox input}
     activate Server
     Server-->>Browser: HTTP 302 Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
