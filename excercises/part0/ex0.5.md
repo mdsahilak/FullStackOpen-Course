@@ -3,7 +3,7 @@ sequenceDiagram
     participant Browser
     participant Server
 
-    Browser->>Server: HTTP GET /spa
+    Browser->>Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate Server
     Server-->>Browser: HTML document (spa.html)
     deactivate Server
