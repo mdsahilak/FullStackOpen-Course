@@ -7,6 +7,7 @@ sequenceDiagram
     Note over Browser: Payload: note={textbox input}
     activate Server
     Server-->>Browser: Returns a 302 Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
+    Note over Server: server adds the note and returns a redirect
     deactivate Server
 
     Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/notes
