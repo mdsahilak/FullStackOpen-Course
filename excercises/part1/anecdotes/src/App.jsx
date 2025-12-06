@@ -21,15 +21,31 @@ const App = () => {
 
   const [selected, setSelected] = useState(0)
 
+  const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
+
   const handleClick = () => {
-    const index = getRandomInt(0, anecdotes.length)
+    let index = getRandomInt(0, anecdotes.length)
     setSelected(index)
   }
 
+  // Increment the vote for the selected anecdote. The array index is the anecdote index.
+  const handleVotes = () => {
+    const votesCopy = [...votes]
+    votesCopy[selected] += 1
+    setVotes(votesCopy)
+  }
+
+  const mostVotedIndex = votes.indexOf(Math.max(...votes))
+
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <p>{anecdotes[selected]}</p>
+      <button onClick={handleVotes}>vote</button>
       <button onClick={handleClick}>next anecdote</button>
+
+      <h1>Anecdote with most votes</h1>
+      <p>{anecdotes[mostVotedIndex]}</p>
     </div>
   )
 }
