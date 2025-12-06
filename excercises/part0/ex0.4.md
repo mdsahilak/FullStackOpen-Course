@@ -3,11 +3,10 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     Note over browser: Payload: note={textbox input}
     activate server
-    server-->>browser: HTTP 302 Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
-    Note over server: A new note is added to the server and redirects to the homepage
+    server-->>browser: 302 Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
