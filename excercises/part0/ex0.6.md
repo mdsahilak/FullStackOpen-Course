@@ -7,10 +7,10 @@ sequenceDiagram
 
     Browser->>Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
     activate Server
-    Note over Browser: { "content": "user's text", "date": "timestamp" }
+    Note over Browser: { "content": "user's text", "date": timestamp }
 
     Server-->>Browser: Returns 201 Created
-    Note over Server: { "content": "user's text", "date": "timestamp" }
+    Note over Server: { "content": "user's text", "date": timestamp }
     deactivate Server
 
     Note over Browser: JavaScript adds the new note to the local list
