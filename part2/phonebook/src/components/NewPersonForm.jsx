@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import personService from '../services/Persons'
 
-const NewPersonForm = ({ persons, setPersons, setMessage }) => {
+const NewPersonForm = ({ persons, setPersons, setNotification }) => {
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
 
@@ -22,12 +22,22 @@ const NewPersonForm = ({ persons, setPersons, setMessage }) => {
 
                         setNewNumber('')
                         setNewName('')
-                    })
 
-                    setMessage(`${person.name}'s phone number has been updated!`)
-                    setTimeout(() => {
-                        setMessage(null)
-                    }, 3000);
+                        setNotification({type: 'success', message: `${person.name}'s phone number has been updated!`})
+                        setTimeout(() => {
+                            setNotification(null)
+                        }, 3000);
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        setNotification({type: 'error', message: `${person.name}'s information has already been removed from the server!`})
+                        setTimeout(() => {
+                            setNotification(null)
+                        }, 3000);
+                        
+                        setNewNumber('')
+                        setNewName('')
+                    })
             } else {
                 setNewNumber('')
                 setNewName('')
@@ -41,9 +51,9 @@ const NewPersonForm = ({ persons, setPersons, setMessage }) => {
                     setNewNumber('')
                     setNewName('')
 
-                    setMessage(`${newName} has been added!`)
+                    setNotification({type: 'success', message:`${newName} has been added!`})
                     setTimeout(() => {
-                        setMessage(null)
+                        setNotification(null)
                     }, 3000);
                 })
         }

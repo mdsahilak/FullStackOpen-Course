@@ -13,7 +13,7 @@ const App = () => {
 
   const [persons, setPersons] = useState([])
 
-  const [message, setMessage] = useState(null)
+  const [notification, setNotification] = useState(null)
 
   useEffect(() => {
     personService
@@ -29,7 +29,7 @@ const App = () => {
     <div>
       <h1>Phonebook</h1>
 
-      <Notification message={message} />
+      <Notification notification={notification} />
 
       <h3>Filter by Name</h3>
       <Filter search={search} setSearch={setSearch} />
@@ -38,7 +38,7 @@ const App = () => {
       <PersonList filteredPersons={filteredPersons} setPersons={setPersons} />
 
       <h3>Add a new phone number</h3>
-      <NewPersonForm persons={persons} setPersons={setPersons} setMessage={setMessage} />
+      <NewPersonForm persons={persons} setPersons={setPersons} setNotification={setNotification} />
 
     </div>
   )
