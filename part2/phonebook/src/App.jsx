@@ -30,7 +30,7 @@ const App = () => {
       <Filter search={search} setSearch={setSearch} />
 
       <h3>Phone Numbers</h3>
-      <PersonList filteredPersons={filteredPersons} />
+      <PersonList filteredPersons={filteredPersons} setPersons={setPersons} />
 
       <h3>Add a new phone number</h3>
       <NewPersonForm persons={persons} setPersons={setPersons} />
