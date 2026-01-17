@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import personService from '../services/Persons'
 
 const NewPersonForm = ({ persons, setPersons }) => {
     const [newName, setNewName] = useState('')
@@ -13,9 +14,14 @@ const NewPersonForm = ({ persons, setPersons }) => {
         if (persons.some((person) => person.name === newName)) {
             alert(`${newName} is already in the phonebook`)
         } else {
-            setPersons(persons.concat({ name: newName, number: newNumber }))
-            setNewName('')
-            setNewNumber('')
+            personService
+                .create({ name: newName, number: newNumber })
+                .then(returnedPerson => {
+                    setPersons(persons.concat(returnedPerson))
+
+                    setNewNumber('')
+                    setNewName('')
+                })
         }
     }
 
