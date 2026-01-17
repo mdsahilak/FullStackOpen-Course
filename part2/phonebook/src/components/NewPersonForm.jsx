@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import personService from '../services/Persons'
 
-const NewPersonForm = ({ persons, setPersons }) => {
+const NewPersonForm = ({ persons, setPersons, setMessage }) => {
     const [newName, setNewName] = useState('')
     const [newNumber, setNewNumber] = useState('')
 
@@ -12,7 +12,6 @@ const NewPersonForm = ({ persons, setPersons }) => {
         event.preventDefault()
 
         if (persons.some((person) => person.name === newName)) {
-            
             if (window.confirm(`${newName} is already in the phonebook. Do you want replace the old number with the new one ?`)) {
                 const person = persons.find(p => p.name == newName)
 
@@ -24,6 +23,11 @@ const NewPersonForm = ({ persons, setPersons }) => {
                         setNewNumber('')
                         setNewName('')
                     })
+
+                    setMessage(`${person.name}'s phone number has been updated!`)
+                    setTimeout(() => {
+                        setMessage(null)
+                    }, 3000);
             } else {
                 setNewNumber('')
                 setNewName('')
@@ -36,6 +40,11 @@ const NewPersonForm = ({ persons, setPersons }) => {
 
                     setNewNumber('')
                     setNewName('')
+
+                    setMessage(`${newName} has been added!`)
+                    setTimeout(() => {
+                        setMessage(null)
+                    }, 3000);
                 })
         }
     }
