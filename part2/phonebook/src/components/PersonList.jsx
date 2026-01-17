@@ -6,7 +6,7 @@ const PersonList = ({ filteredPersons, setPersons }) => {
     personService
       .remove(person.id)
       .then(removedPerson => {
-        setPersons(filteredPersons.filter(n => n.id != removedPerson.id))
+        setPersons(filteredPersons.filter(p => p.id != removedPerson.id))
       })
   }
 
